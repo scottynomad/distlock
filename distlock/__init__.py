@@ -4,10 +4,6 @@ from redis import StrictRedis
 import time
 
 
-__version__ = '0.1.0'
-VERSION = tuple(map(int, __version__.split('.')))
-
-
 class DistributedLock(object):
     in_use = False
     is_locked = False
@@ -66,5 +62,3 @@ class DistributedLockFactory(object):
 
     def __call__(self, key='lock'):
         return self._factory(key=self.prefix + key)
-
-

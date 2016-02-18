@@ -1,5 +1,4 @@
 import sys
-from distlock import __version__
 
 
 try:
@@ -28,7 +27,7 @@ except ImportError:
 
 setup(
     name='distlock',
-    version=__version__,
+    version='0.1.0',
     packages=['distlock'],
     keywords=['distlock', 'Redis', 'lock', 'distributed'],
     tests_require=['pytest>=2.5.0'],
