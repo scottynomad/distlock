@@ -30,7 +30,7 @@ setup(
     version='0.1.0',
     packages=['distlock'],
     keywords=['distlock', 'Redis', 'lock', 'distributed'],
-    tests_require=['pytest>=2.5.0'],
+    tests_require=['pytest>=2.8.0'],
     cmdclass={'test': PyTest},
     url='https://github.com/scottynomad/distlock',
     license='MIT',

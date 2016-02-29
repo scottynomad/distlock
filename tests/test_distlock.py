@@ -54,7 +54,9 @@ def test_factory_basic(redis):
 
 def test_factory_prefix(redis):
     factory = DistributedLockFactory(prefix='foo|', redis=redis)
-    lock1 = factory('l1').lock()
-    lock2 = factory('l2').lock()
+    lock1 = factory('l1')
+    lock1.lock()
+    lock2 = factory('l2')
+    lock2.lock()
     assert redis.lrange('foo|l1', 0, 99) == [lock1.id]
     assert redis.lrange('foo|l2', 0, 99) == [lock2.id]
