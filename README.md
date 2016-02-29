@@ -5,11 +5,11 @@ A very simple distributed advisory locking primitive using [Redis](http://redis.
 ## Briefly
 
 ```python
->>> redis = getfixture('redis')
->>> f = DistributedLockFactory(prefix="locks", redis=redis)
+>>> f = DistributedLockFactory(prefix="locks|")
 >>> with f(12345) as l:
-...     assert l.is_locked
-...     assert l.key == 'locks12345'
+...     # Protected block. Subsequent attempts to lock this
+...     # key `locks|12345` will block.
+...     assert l.key == 'locks|12345'
 ```
 
 ## Back Story
@@ -23,8 +23,11 @@ among network-attached processes.  Because it is a single-process
 event-driven service, all individual operations on it are by definition atomic
 enabling us to build a locking mechanism over it.
 
+Implementations in other languages to come.
+
 ## Build Status
 
+---------|---------
 `master` | [![Build
 Status](https://travis-ci.org/scottynomad/distlock.svg?branch=master)](https://travis-ci.org/scottynomad/distlock)
 
